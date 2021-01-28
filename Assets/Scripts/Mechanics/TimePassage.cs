@@ -11,7 +11,8 @@ namespace Mechanics
         [SerializeField]
         private List<TimePoint> m_timePoints;
 
-        private int m_activeTimePointIndex;
+        [SerializeField]
+        private int m_activeTimePointIndex = 0;
 
         private float m_lastPointTime;
 
