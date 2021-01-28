@@ -7,9 +7,12 @@ namespace Mechanics
     {
         [SerializeField]
         private List<TimePoint> m_timePoints;
+
+        [HideInInspector]
+        public TimePoint ActiveTimePoint { get; set; }
     }
 
-    enum ETimeEffect
+    public enum ETimeEffect
     {
         NONE,
         QUARANTINE_START,
@@ -17,7 +20,7 @@ namespace Mechanics
     }
 
     [System.Serializable]
-    struct TimePoint
+    public struct TimePoint
     {
         public string label;
         public ETimeEffect timeEffect;
