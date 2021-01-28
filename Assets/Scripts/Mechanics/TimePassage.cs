@@ -16,7 +16,7 @@ namespace Mechanics
     {
         NONE,
         QUARANTINE_START,
-        QUARANTINE_END,        
+        QUARANTINE_END,
     }
 
     [System.Serializable]
