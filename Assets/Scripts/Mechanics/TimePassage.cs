@@ -8,7 +8,6 @@ namespace Mechanics
         [SerializeField]
         private List<TimePoint> m_timePoints;
 
-        [HideInInspector]
         public TimePoint ActiveTimePoint { get; set; }
     }
 
