@@ -12,6 +12,7 @@ namespace Mechanics
         //The array property we will edit
         SerializedProperty timePoints;
         SerializedProperty progressDurationSeconds;
+        SerializedProperty activeTimePointIndex;
 
         //The Reorderable list we will be working with
         ReorderableList list;
@@ -22,6 +23,7 @@ namespace Mechanics
         {
             timePoints = serializedObject.FindProperty("m_timePoints");
             progressDurationSeconds = serializedObject.FindProperty("m_progressDurationSeconds");
+            activeTimePointIndex = serializedObject.FindProperty("m_activeTimePointIndex");
 
             list = new ReorderableList(serializedObject, timePoints, true, true, true, true);
 
@@ -60,6 +62,16 @@ namespace Mechanics
                 GUIContent.none
             );
 
+            // Active Time Point Notifier
+            if (activeTimePointIndex.intValue == index)
+            {
+                EditorGUI.DrawRect(new Rect(currentElementPos.x + 40, currentElementPos.y, 10, EditorGUIUtility.singleLineHeight), Color.green);
+            }
+            else
+            {
+                EditorGUI.DrawRect(new Rect(currentElementPos.x + 40, currentElementPos.y, 10, EditorGUIUtility.singleLineHeight), Color.grey);
+            }
+            
         }
 
         void DrawHeader(Rect rect)
