@@ -1,17 +1,23 @@
-﻿using UnityEngine;
-using UnityEngine.UIElements;
+﻿using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Mechanics.CharachterLogic
 {
     public class SpeechOptions : MonoBehaviour
     {
-        [SerializeField] private Button[] buttons;
+        [SerializeField] public List<Button> buttons;
         [SerializeField] public ConversationManager _ConversationManager;
         // Start is called before the first frame update
         void Start()
         {
-            buttons = GetComponentsInChildren<Button>();
-            if (buttons == null || buttons.Length ==0)
+            foreach (Button button in GetComponentsInChildren<Button>())
+            {
+                buttons.Add(button);
+            }
+                
+            if (buttons.Count ==0)
             {
                 Debug.LogError("No Buttons for " + this.name);
             }
@@ -26,7 +32,8 @@ namespace Mechanics.CharachterLogic
 
         public void Converse(int c)
         {
-            _ConversationManager.Converse(c); // TODO change this from int
+            string str = buttons[c].GetComponentInChildren<TextMeshProUGUI>().text;
+            _ConversationManager.Converse(c,str); // TODO change this from int
         }
     }
 }

@@ -1336,6 +1336,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speechBubble: {fileID: 0}
   _speechOptions: {fileID: 0}
+  currentConversation: {fileID: 0}
+  currentConversationNum: 0
+  conversations:
+  - {fileID: 11400000, guid: d82dbcf19ba34ac4d9aba08717a5ddcf, type: 2}
+  _character: {fileID: 0}
 --- !u!1 &814675069
 GameObject:
   m_ObjectHideFlags: 0
@@ -2105,6 +2110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9389877c83a5e1744992a30f36fc931d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttons: []
   _ConversationManager: {fileID: 0}
 --- !u!114 &1188745959
 MonoBehaviour:
