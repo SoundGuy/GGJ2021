@@ -1887,6 +1887,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1915514481411420257, guid: 5a87d91952d38ac49aaae247185c8960,
+        type: 3}
+      propertyPath: m_text
+      value: "\U0001F600"
+      objectReference: {fileID: 0}
     - target: {fileID: 1915514481710474229, guid: 5a87d91952d38ac49aaae247185c8960,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1987,6 +1992,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 511041706}
+    - target: {fileID: 1915514482977449671, guid: 5a87d91952d38ac49aaae247185c8960,
+        type: 3}
+      propertyPath: m_text
+      value: "\U0001F600"
+      objectReference: {fileID: 0}
     - target: {fileID: 4456333107652953825, guid: 5a87d91952d38ac49aaae247185c8960,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2006,6 +2016,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6762611173990594549, guid: 5a87d91952d38ac49aaae247185c8960,
+        type: 3}
+      propertyPath: m_text
+      value: "\U0001F601"
       objectReference: {fileID: 0}
     - target: {fileID: 6762611174280733793, guid: 5a87d91952d38ac49aaae247185c8960,
         type: 3}

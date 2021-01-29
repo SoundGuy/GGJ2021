@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: A simple conversation
   m_EditorClassIdentifier: 
   ConvesationOptions:
-  - :<
-  - :()
-  - :]
+  - "\U0001F60F"
+  - "\U0001F62C"
+  - "\U0001F601"
   ConvesationResponses:
-  - :/
-  - :)
-  - :*
+  - "\U0001F636"
+  - "\U0001F917"
+  - "\U0001F92D"
