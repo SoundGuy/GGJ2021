@@ -12,14 +12,10 @@ namespace Mechanics.CharachterLogic
         // Start is called before the first frame update
         void Start()
         {
-            foreach (Button button in GetComponentsInChildren<Button>())
-            {
-                buttons.Add(button);
-            }
-                
+            
             if (buttons.Count ==0)
             {
-                Debug.LogError("No Buttons for " + this.name);
+                initButtons();
             }
             
         }
@@ -34,6 +30,19 @@ namespace Mechanics.CharachterLogic
         {
             string str = buttons[c].GetComponentInChildren<TextMeshProUGUI>().text;
             _ConversationManager.Converse(c,str); // TODO change this from int
+        }
+
+        public void initButtons()
+        {
+            foreach (Button button in GetComponentsInChildren<Button>())
+            {
+                buttons.Add(button);
+            }
+                
+            if (buttons.Count ==0)
+            {
+                Debug.LogError("No Buttons for " + this.name);
+            }
         }
     }
 }

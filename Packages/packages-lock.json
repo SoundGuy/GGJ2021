@@ -27,6 +27,15 @@
       },
       "url": "https://package.openupm.com"
     },
+    "com.kyub.emojisearch": {
+      "version": "https://gitlab-ci-token:zF563oCqvXdJmiDuMShq@gitlab.com/KyubInteractive/kyublibs.git#com.kyub.emojisearch-1.0.7",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.textmeshpro": "1.3.0"
+      },
+      "hash": "d3a907847b2595af9d5c341c9ccf856c5726bb3d"
+    },
     "com.unity.collab-proxy": {
       "version": "1.3.9",
       "depth": 0,

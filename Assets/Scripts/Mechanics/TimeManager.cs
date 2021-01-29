@@ -63,7 +63,10 @@ namespace Mechanics
 
         public void OrderTimePoints()
         {
-            m_timePoints = m_timePoints.OrderBy(item => item.activationTime).ToList();
+            if (m_timePoints.Count > 0)
+            {
+                m_timePoints = m_timePoints.OrderBy(item => item.activationTime).ToList();
+            }
         }
     }
 

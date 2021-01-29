@@ -28,7 +28,7 @@ namespace Mechanics.CharacterLogic
         
         public void RelationshipIncrease(float amount)
         {
-            relationshipStrength -= amount;
+            relationshipStrength += amount;
             if (relationshipStrength > 100f) // TODO : move to some sort of parameter settings.
             {
                 relationshipStrength = 100f;
