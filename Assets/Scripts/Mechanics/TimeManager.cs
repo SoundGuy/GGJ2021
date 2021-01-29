@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Mechanics
 {
-    public class TimePassage : MonoBehaviour
+    public class TimeManager : MonoBehaviour
     {
         [SerializeField]
         private float m_progressDurationSeconds;
@@ -13,9 +13,14 @@ namespace Mechanics
         private List<TimePoint> m_timePoints;
 
         [SerializeField]
-        private int m_activeTimePointIndex = 0;
+        private List<int> m_maxTimeLimitPerRoomVists;
+
+        [SerializeField]
+        private int m_activeTimePointIndex;
 
         private float m_elapsedTime;
+
+        private RoomsManager m_roomsManager;
 
         public TimePoint ActiveTimePoint
         {
@@ -27,24 +32,32 @@ namespace Mechanics
 
         public void ProgressTime(float progressBy)
         {
-            m_elapsedTime += progressBy;
+            int currentRoomTimeLimit = m_maxTimeLimitPerRoomVists[m_roomsManager.RoomsVisited];
+
+            if (m_elapsedTime <= currentRoomTimeLimit)
+            {
+                m_elapsedTime += progressBy;
+            }
+
+            TimePoint nextTimePoint = m_timePoints[m_activeTimePointIndex + 1];
+            if (m_activeTimePointIndex < m_timePoints.Count &&
+                m_elapsedTime >= nextTimePoint.activationTime)
+            {
+                {
+                    m_activeTimePointIndex++;
+                }
+            }
         }
 
-        private void Start()
+        private void Awake()
         {
             m_elapsedTime = 0;
-        }
+            m_activeTimePointIndex = -1;
+            m_roomsManager = FindObjectOfType<RoomsManager>();
 
-        private void Update()
-        {
-            ProgressTime(Time.deltaTime);
-
-            if ( m_elapsedTime >= ActiveTimePoint.activationTime )
+            if (m_roomsManager == null)
             {
-                if (m_activeTimePointIndex < m_timePoints.Count)
-                {
-                    m_activeTimePointIndex ++;
-                }
+                throw new System.Exception("Missing RoomsManager in the scene");
             }
         }
 
