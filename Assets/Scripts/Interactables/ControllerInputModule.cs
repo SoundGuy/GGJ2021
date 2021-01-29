@@ -7,29 +7,35 @@ using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using WebXR;
 
-public class ControllerInputModule : PointerInputModule 
+public class ControllerInputModule : PointerInputModule
 {
   public WebXRController controller;
   public Transform hitPoint;
   public GameObject hitPointGameObject;
 
-	private PointerEventData pointerEventData;
-	private GameObject currentPointAtHandler;
+  private PointerEventData pointerEventData;
+  private GameObject currentPointAtHandler;
 
-	public override void Process()
-	{ 
-		HandlePoint();
-		HandleSelection();
-	}
+  protected override void OnDisable()
+  {
+    base.OnDisable();
+    hitPointGameObject.SetActive(false);
+  }
 
-	void HandlePoint()
-	{
-		if (pointerEventData == null)
-		{
-			pointerEventData = new PointerEventData(eventSystem);
-		}
-		pointerEventData.position = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
-		pointerEventData.delta = Vector2.zero;
+  public override void Process()
+  {
+    HandlePoint();
+    HandleSelection();
+  }
+
+  void HandlePoint()
+  {
+    if (pointerEventData == null)
+    {
+      pointerEventData = new PointerEventData(eventSystem);
+    }
+    pointerEventData.position = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
+    pointerEventData.delta = Vector2.zero;
     List<RaycastResult> raycastResults = new List<RaycastResult>();
     eventSystem.RaycastAll(pointerEventData, raycastResults);
     pointerEventData.pointerCurrentRaycast = FindFirstRaycast(raycastResults);
@@ -38,29 +44,29 @@ public class ControllerInputModule : PointerInputModule
     {
       hitPoint.position = pointerEventData.pointerCurrentRaycast.worldPosition;
     }
-		ProcessMove(pointerEventData);
-	}
+    ProcessMove(pointerEventData);
+  }
 
-	void HandleSelection()
-	{
-		if (pointerEventData.pointerEnter != null)
-		{
-			GameObject handler = ExecuteEvents.GetEventHandler<IPointerClickHandler>(pointerEventData.pointerEnter);
-			if (currentPointAtHandler != handler)
-			{
-				currentPointAtHandler = handler;
-			}
+  void HandleSelection()
+  {
+    if (pointerEventData.pointerEnter != null)
+    {
+      GameObject handler = ExecuteEvents.GetEventHandler<IPointerClickHandler>(pointerEventData.pointerEnter);
+      if (currentPointAtHandler != handler)
+      {
+        currentPointAtHandler = handler;
+      }
 
-			if (currentPointAtHandler != null && controller.GetButtonUp(WebXRController.ButtonTypes.Trigger))
-			{
-				ExecuteEvents.ExecuteHierarchy(currentPointAtHandler, pointerEventData, ExecuteEvents.pointerClickHandler);
-			}
-		}
-		else
-		{
-			currentPointAtHandler = null;
-		}
-	}
+      if (currentPointAtHandler != null && controller.GetButtonUp(WebXRController.ButtonTypes.Trigger))
+      {
+        ExecuteEvents.ExecuteHierarchy(currentPointAtHandler, pointerEventData, ExecuteEvents.pointerClickHandler);
+      }
+    }
+    else
+    {
+      currentPointAtHandler = null;
+    }
+  }
 
 
 }
