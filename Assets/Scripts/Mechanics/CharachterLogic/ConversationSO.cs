@@ -5,16 +5,8 @@ namespace Mechanics.CharachterLogic
     [CreateAssetMenu(menuName = "Characters/Conversation")]
     public class ConversationSO : ScriptableObject
     {
-        // Start is called before the first frame update
-        void Start()
-        {
+        [SerializeField] public string [] ConvesationOptions;
+        [SerializeField] public string [] ConvesationResponses;
         
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
     }
 }

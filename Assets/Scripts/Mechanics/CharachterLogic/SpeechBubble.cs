@@ -8,7 +8,7 @@ namespace Mechanics.CharachterLogic
         [SerializeField] private TextMeshProUGUI speech; // TODO change to emoji ?
         // Start is called before the first frame update
 
-        void Speak(string phrase)
+        public void Speak(string phrase)
         {
             speech.text = phrase;
         }

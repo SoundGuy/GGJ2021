@@ -25,7 +25,7 @@ namespace Mechanics
             progressDurationSeconds = serializedObject.FindProperty("m_progressDurationSeconds");
             activeTimePointIndex = serializedObject.FindProperty("m_activeTimePointIndex");
 
-            list = new ReorderableList(serializedObject, timePoints, true, true, true, true);
+            list = new ReorderableList(serializedObject, timePoints, false, true, true, true);
 
             list.drawElementCallback = DrawListItems;
             list.drawHeaderCallback = DrawHeader;
@@ -52,13 +52,25 @@ namespace Mechanics
 
             currentElementPos.x += 120;
 
-            EditorGUI.LabelField(new Rect(currentElementPos.x, currentElementPos.y, 100, EditorGUIUtility.singleLineHeight), "timeEffect");
+            EditorGUI.LabelField(new Rect(currentElementPos.x, currentElementPos.y, 60, EditorGUIUtility.singleLineHeight), "effect");
 
-            currentElementPos.x += 60;
+            currentElementPos.x += 40;
 
             EditorGUI.PropertyField(
                 new Rect(currentElementPos.x, currentElementPos.y, 20, EditorGUIUtility.singleLineHeight),
                 element.FindPropertyRelative("timeEffect"),
+                GUIContent.none
+            );
+
+            currentElementPos.x += 30;
+
+            EditorGUI.LabelField(new Rect(currentElementPos.x, currentElementPos.y, 100, EditorGUIUtility.singleLineHeight), "time");
+
+            currentElementPos.x += 30;
+
+            EditorGUI.PropertyField(
+                new Rect(currentElementPos.x, currentElementPos.y, 40, EditorGUIUtility.singleLineHeight),
+                element.FindPropertyRelative("activationTime"),
                 GUIContent.none
             );
 
@@ -84,6 +96,13 @@ namespace Mechanics
         public override void OnInspectorGUI()
         {
             EditorGUILayout.PropertyField(progressDurationSeconds);
+
+            if ((Event.current.type == EventType.MouseDown && Event.current.button == 0) ||
+                (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Return) ||
+                (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Escape))
+            {
+                (target as TimePassage).OrderTimePoints();
+            }
 
             serializedObject.Update();
             list.DoLayoutList();
