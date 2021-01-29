@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace Mechanics
 {
@@ -14,7 +15,7 @@ namespace Mechanics
         [SerializeField]
         private int m_activeTimePointIndex = 0;
 
-        private float m_lastPointTime;
+        private float m_elapsedTime;
 
         public TimePoint ActiveTimePoint
         {
@@ -24,27 +25,32 @@ namespace Mechanics
             }
         }
 
-        public void ProgressTime(int progressBy)
+        public void ProgressTime(float progressBy)
         {
-            m_activeTimePointIndex += progressBy;
+            m_elapsedTime += progressBy;
         }
 
         private void Start()
         {
-            m_lastPointTime = Time.time;
+            m_elapsedTime = 0;
         }
 
         private void Update()
         {
-            if( Time.time - m_lastPointTime > m_progressDurationSeconds)
-            {
-                m_lastPointTime = Time.time;
+            ProgressTime(Time.deltaTime);
 
+            if ( m_elapsedTime >= ActiveTimePoint.activationTime )
+            {
                 if (m_activeTimePointIndex < m_timePoints.Count)
                 {
-                    ProgressTime(1);
+                    m_activeTimePointIndex ++;
                 }
             }
+        }
+
+        public void OrderTimePoints()
+        {
+            m_timePoints = m_timePoints.OrderBy(item => item.activationTime).ToList();
         }
     }
 
@@ -60,5 +66,6 @@ namespace Mechanics
     {
         public string label;
         public ETimeEffect timeEffect;
+        public float activationTime;
     }
 }
