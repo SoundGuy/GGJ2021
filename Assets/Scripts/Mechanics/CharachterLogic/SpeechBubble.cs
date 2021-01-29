@@ -15,7 +15,11 @@ namespace Mechanics.CharachterLogic
             
         void Start()
         {
-        
+            speech = GetComponentInChildren<TextMeshProUGUI>();
+            if (!speech)
+            {
+                Debug.LogError("No speech");
+            }
         }
 
         // Update is called once per frame
