@@ -41,12 +41,16 @@ namespace Mechanics.CharachterLogic
 
             currentConversation = conversations[currentConversationNum];
 
-            //SetConversations();
+            SetConversations();
         }
 
 
         void SetConversations()
         {
+            if (_speechOptions.buttons.Count == 0)
+            {
+                _speechOptions.initButtons();
+            }
             int i = 0;
             foreach (string  str in currentConversation.ConvesationOptions)
             {
@@ -64,7 +68,7 @@ namespace Mechanics.CharachterLogic
         {
             _character.RelationshipIncrease(10);
             _speechBubble.Speak(currentConversation.ConvesationResponses[i]);
-            if (currentConversationNum < conversations.Length)
+            if (currentConversationNum < conversations.Length -1)
             {
                 currentConversation = conversations[++currentConversationNum];
                 SetConversations();
