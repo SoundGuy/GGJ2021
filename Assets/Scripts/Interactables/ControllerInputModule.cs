@@ -28,14 +28,7 @@ public class ControllerInputModule : PointerInputModule
 		{
 			pointerEventData = new PointerEventData(eventSystem);
 		}
-		if (UnityEngine.XR.XRSettings.enabled)
-		{
-			pointerEventData.position = new Vector2(UnityEngine.XR.XRSettings.eyeTextureWidth * 0.5f, UnityEngine.XR.XRSettings.eyeTextureHeight * 0.5f);
-		}
-		else
-		{
-			pointerEventData.position = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
-		}
+		pointerEventData.position = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
 		pointerEventData.delta = Vector2.zero;
     List<RaycastResult> raycastResults = new List<RaycastResult>();
     eventSystem.RaycastAll(pointerEventData, raycastResults);
