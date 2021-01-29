@@ -11,7 +11,7 @@ namespace Mechanics
         private float secondsPassedPerRoom = 50f;
 
         [SerializeField]
-        private TimePassage timePassage;
+        private TimeManager timePassage;
 
         public void UserVisitedRoom()
         {

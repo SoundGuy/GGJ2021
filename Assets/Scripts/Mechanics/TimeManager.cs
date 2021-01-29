@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Mechanics
 {
-    public class TimePassage : MonoBehaviour
+    public class TimeManager : MonoBehaviour
     {
         [SerializeField]
         private float m_progressDurationSeconds;

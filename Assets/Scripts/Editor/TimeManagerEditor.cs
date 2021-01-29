@@ -6,8 +6,8 @@ using UnityEditorInternal;
 
 namespace Mechanics
 { 
-    [CustomEditor(typeof(TimePassage))]
-    public class TimePassageEditor : Editor
+    [CustomEditor(typeof(TimeManager))]
+    public class TimeManagerEditor : Editor
     {
         //The array property we will edit
         SerializedProperty timePoints;
@@ -101,7 +101,7 @@ namespace Mechanics
                 (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Return) ||
                 (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Escape))
             {
-                (target as TimePassage).OrderTimePoints();
+                (target as TimeManager).OrderTimePoints();
             }
 
             serializedObject.Update();
