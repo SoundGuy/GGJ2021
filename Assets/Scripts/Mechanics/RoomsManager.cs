@@ -8,19 +8,11 @@ namespace Mechanics
         public Action<ERoomID> OnRoomVisited;
         public int RoomsVisited { get; private set; }
 
-        private TimeManager timeManager;
-
-        public void Awake()
-        {
-            timeManager = FindObjectOfType<TimeManager>();
-        }
-
         public void UserVisitedRoom(ERoomID roomId)
         {
             RoomsVisited++;
 
             OnRoomVisited?.Invoke(roomId);
-            
         }
     }
 
