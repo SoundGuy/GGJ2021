@@ -1,6 +1,11 @@
 ﻿using Mechanics.CharacterLogic;
 using TMPro;
+using TMPro.SpriteAssetUtilities;
 using UnityEngine;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
+using UnityEngine.UI;
+using Image = UnityEngine.UI.Image;
 
 namespace Mechanics.CharachterLogic
 {
@@ -15,6 +20,9 @@ namespace Mechanics.CharachterLogic
         [SerializeField] private ConversationSO[] conversations;
 
         [SerializeField] private Character _character;
+
+
+        [SerializeField] private Sprite [] emojiSpriteSheet;
         // Start is called before the first frame update
         void Start()
         {
@@ -40,6 +48,7 @@ namespace Mechanics.CharachterLogic
             }
 
             currentConversation = conversations[currentConversationNum];
+            _speechBubble.SpeakSprite(emojiSpriteSheet[Random.Range(0,emojiSpriteSheet.Length)]);
 
             SetConversations();
         }
@@ -51,11 +60,37 @@ namespace Mechanics.CharachterLogic
             {
                 _speechOptions.initButtons();
             }
+            
+            /*
             int i = 0;
             foreach (string  str in currentConversation.ConvesationOptions)
             {
                 _speechOptions.buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = str;
                 i++;
+            }*/
+
+            foreach (Button button in _speechOptions.buttons)
+            {
+                Image img = null;
+
+                foreach (Image buttonimg in button.GetComponentsInChildren<Image>())
+                {
+                    if (buttonimg.name == "Emoji")
+                    {
+                        img = buttonimg;
+                    }
+                    
+                    
+                }
+
+                if (img != null)
+                {
+                    img.sprite = emojiSpriteSheet[Random.Range(0, emojiSpriteSheet.Length)];
+                } else  {
+                    Debug.LogError("No Emoji IMG");
+                        
+                }
+
             }
         }
         // Update is called once per frame
@@ -67,7 +102,8 @@ namespace Mechanics.CharachterLogic
         public void Converse(int i, string str = "")
         {
             _character.RelationshipIncrease(10);
-            _speechBubble.Speak(currentConversation.ConvesationResponses[i]);
+            //_speechBubble.Speak(currentConversation.ConvesationResponses[i]);
+            _speechBubble.SpeakSprite(emojiSpriteSheet[Random.Range(0,emojiSpriteSheet.Length)]);
             if (currentConversationNum < conversations.Length -1)
             {
                 currentConversation = conversations[++currentConversationNum];
