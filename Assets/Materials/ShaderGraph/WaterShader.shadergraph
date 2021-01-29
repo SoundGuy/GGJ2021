@@ -88,7 +88,11 @@
             "m_Id": "c2c07002670f4c3782edcfe6b9ec3687"
         }
     ],
-    "m_GroupDatas": [],
+    "m_GroupDatas": [
+        {
+            "m_Id": "e05760234b8943d9a280c5b7d6aa347a"
+        }
+    ],
     "m_StickyNoteDatas": [],
     "m_Edges": [
         {
@@ -651,17 +655,17 @@
     "m_Type": "UnityEditor.ShaderGraph.MultiplyNode",
     "m_ObjectId": "266641596ffe4d4da47d7e6f3fb6667c",
     "m_Group": {
-        "m_Id": ""
+        "m_Id": "e05760234b8943d9a280c5b7d6aa347a"
     },
     "m_Name": "Multiply",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1204.0,
-            "y": 18.000045776367189,
+            "x": -1352.0001220703125,
+            "y": -8.000018119812012,
             "width": 208.00001525878907,
-            "height": 302.0000305175781
+            "height": 302.0
         }
     },
     "m_Slots": [
@@ -998,17 +1002,17 @@
     "m_Type": "UnityEditor.ShaderGraph.AddNode",
     "m_ObjectId": "61512ab5766e4a0c88b7df10f477d186",
     "m_Group": {
-        "m_Id": ""
+        "m_Id": "e05760234b8943d9a280c5b7d6aa347a"
     },
     "m_Name": "Add",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -931.9999389648438,
-            "y": -28.99994659423828,
+            "x": -1076.0,
+            "y": -79.0,
             "width": 208.00001525878907,
-            "height": 302.0000305175781
+            "height": 302.0
         }
     },
     "m_Slots": [
@@ -1561,10 +1565,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1516.9998779296875,
-            "y": -231.99998474121095,
+            "x": -1922.0,
+            "y": -256.00006103515627,
             "width": 208.0,
-            "height": 314.0
+            "height": 314.0000305175781
         }
     },
     "m_Slots": [
@@ -1997,6 +2001,17 @@
         "w": 0.0
     },
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.GroupData",
+    "m_ObjectId": "e05760234b8943d9a280c5b7d6aa347a",
+    "m_Title": "Directional Movement",
+    "m_Position": {
+        "x": -1377.0001220703125,
+        "y": -138.0
+    }
 }
 
 {
