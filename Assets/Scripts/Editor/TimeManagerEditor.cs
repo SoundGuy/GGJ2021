@@ -12,10 +12,12 @@ namespace Mechanics
         //The array property we will edit
         SerializedProperty timePoints;
         SerializedProperty progressDurationSeconds;
+        SerializedProperty maxTimeLimitPerRoomVists;
         SerializedProperty activeTimePointIndex;
 
         //The Reorderable list we will be working with
-        ReorderableList list;
+        ReorderableList timePointsList;
+        ReorderableList maxTimePointsPerRoomList;
 
         Vector2 currentElementPos = default(Vector2);
 
@@ -23,17 +25,23 @@ namespace Mechanics
         {
             timePoints = serializedObject.FindProperty("m_timePoints");
             progressDurationSeconds = serializedObject.FindProperty("m_progressDurationSeconds");
+            maxTimeLimitPerRoomVists = serializedObject.FindProperty("m_maxTimeLimitPerRoomVists");
             activeTimePointIndex = serializedObject.FindProperty("m_activeTimePointIndex");
 
-            list = new ReorderableList(serializedObject, timePoints, false, true, true, true);
+            timePointsList = new ReorderableList(serializedObject, timePoints, false, true, true, true);
+            maxTimePointsPerRoomList = new ReorderableList(serializedObject, maxTimeLimitPerRoomVists, false, true, true, true);
 
-            list.drawElementCallback = DrawListItems;
-            list.drawHeaderCallback = DrawHeader;
+            timePointsList.drawElementCallback = DrawTimePointsListItem;
+            timePointsList.drawHeaderCallback = DrawTimePointsListHeader;
+
+            maxTimePointsPerRoomList.drawElementCallback = DrawMaxTimePerRoomListItem;
+            maxTimePointsPerRoomList.drawHeaderCallback = DrawMaxTimePerVisitListHeader;
+
         }
 
-        void DrawListItems(Rect rect, int index, bool isActive, bool isFocused)
+        void DrawTimePointsListItem(Rect rect, int index, bool isActive, bool isFocused)
         {
-            SerializedProperty element = list.serializedProperty.GetArrayElementAtIndex(index); //The element in the list
+            SerializedProperty element = timePointsList.serializedProperty.GetArrayElementAtIndex(index); //The element in the list
 
             // Create a property field and label field for each property. 
 
@@ -86,17 +94,41 @@ namespace Mechanics
             
         }
 
-        void DrawHeader(Rect rect)
+        void DrawMaxTimePerRoomListItem(Rect rect, int index, bool isActive, bool isFocused)
         {
-            string name = "Time Point";
+            SerializedProperty element = maxTimePointsPerRoomList.serializedProperty.GetArrayElementAtIndex(index); //The element in the list
+
+            // Create a property field and label field for each property. 
+
+            currentElementPos.x = rect.x;
+            currentElementPos.y = rect.y;
+
+            EditorGUI.LabelField(new Rect(currentElementPos.x, currentElementPos.y, 100, EditorGUIUtility.singleLineHeight), index + " Vists");
+
+            currentElementPos.x += 60;
+
+            EditorGUI.PropertyField(
+                new Rect(currentElementPos.x, currentElementPos.y, 100, EditorGUIUtility.singleLineHeight),
+                element,
+                GUIContent.none
+            );
+        }
+
+        void DrawTimePointsListHeader(Rect rect)
+        {
+            string name = "Time Point (seconds)";
+            EditorGUI.LabelField(rect, name);
+        }
+
+        void DrawMaxTimePerVisitListHeader(Rect rect)
+        {
+            string name = "Max Time Per Room Vists (seconds)";
             EditorGUI.LabelField(rect, name);
         }
 
         //This is the function that makes the custom editor work
         public override void OnInspectorGUI()
         {
-            EditorGUILayout.PropertyField(progressDurationSeconds);
-
             if ((Event.current.type == EventType.MouseDown && Event.current.button == 0) ||
                 (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Return) ||
                 (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Escape))
@@ -105,7 +137,10 @@ namespace Mechanics
             }
 
             serializedObject.Update();
-            list.DoLayoutList();
+
+            maxTimePointsPerRoomList.DoLayoutList();
+            timePointsList.DoLayoutList();
+
             serializedObject.ApplyModifiedProperties();
         }
     }
