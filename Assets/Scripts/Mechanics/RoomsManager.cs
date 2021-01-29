@@ -5,20 +5,33 @@ namespace Mechanics
 {
     public class RoomsManager : MonoBehaviour
     {
+        public Action<ERoomID> OnRoomVisited;
         public int RoomsVisited { get; private set; }
 
-        [SerializeField]
-        private float secondsPassedPerRoom = 50f;
+        private TimeManager timeManager;
 
-        [SerializeField]
-        private TimeManager timePassage;
+        public void Awake()
+        {
+            timeManager = FindObjectOfType<TimeManager>();
+        }
 
-        public void UserVisitedRoom()
+        public void UserVisitedRoom(ERoomID roomId)
         {
             RoomsVisited++;
 
-            timePassage.ProgressTime(secondsPassedPerRoom);
+            OnRoomVisited?.Invoke(roomId);
+            
         }
+    }
+
+    public enum ERoomID
+    {
+        HOME,
+        HOLOGRAMS,
+        COFFEE,
+        PARK,
+        BEACH,
+        CONFERENCE,
     }
 }
 
