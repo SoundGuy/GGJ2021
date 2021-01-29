@@ -28,15 +28,15 @@ namespace Mechanics.CharachterLogic
 
         public void Converse(int c)
         {
-            string str = buttons[c].GetComponentInChildren<TextMeshProUGUI>().text;
-            _ConversationManager.Converse(c,str); // TODO change this from int
+//            string str = buttons[c].GetComponentInChildren<TextMeshProUGUI>().text;
+            _ConversationManager.Converse(c,""); // TODO change this from int
         }
 
         public void initButtons()
         {
             foreach (Button button in GetComponentsInChildren<Button>())
             {
-                buttons.Add(button);
+                    buttons.Add(button);
             }
                 
             if (buttons.Count ==0)
