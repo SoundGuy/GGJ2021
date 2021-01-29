@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-#if UNITY_EDITOR
+#if UNITY_EDITOR || !UNITY_WEBGL
 using UnityEngine.XR;
 using UnityEngine.XR.Management;
 #endif
@@ -58,7 +58,7 @@ public class FlatController : MonoBehaviour
     }
   }
 
-#if UNITY_EDITOR
+#if UNITY_EDITOR || !UNITY_WEBGL
   void Start()
   {
     var xrSettings = XRGeneralSettings.Instance;
@@ -96,6 +96,11 @@ public class FlatController : MonoBehaviour
 
     mainCameraIsFlat = false;
     SetControllerInput(true);
+  }
+#else
+  void Start()
+  {
+    SetControllerInput(false);
   }
 #endif
 
