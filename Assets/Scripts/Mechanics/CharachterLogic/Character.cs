@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Mechanics
+namespace Mechanics.CharacterLogic
 {
     public class Character : MonoBehaviour
     {
