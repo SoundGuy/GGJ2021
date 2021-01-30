@@ -11,15 +11,18 @@ namespace Mechanics
         [SerializeField]
         private ERoomID firstRoom = ERoomID.HOME;
 
-        SceneLoadManager sceneLoadManager;
+        private ERoomID lastRoomVisited;
+
+        private SceneLoadManager sceneLoadManager;
 
         public void VisitRoom(ERoomID roomId)
         {
-            RoomsVisited++;
+            if (lastRoomVisited == roomId) return;
 
-            OnRoomVisited?.Invoke(roomId);
+            lastRoomVisited = roomId;
 
             ChangeRoomById(roomId);
+            sceneLoadManager.OnNewSceneActive += () => { RoomVisited(roomId); };
         }
 
         private void ChangeRoomById(ERoomID roomId)
@@ -44,8 +47,17 @@ namespace Mechanics
             }
         }
 
+        private void RoomVisited(ERoomID roomId)
+        {
+            RoomsVisited++;
+
+            OnRoomVisited?.Invoke(roomId);
+        }
+
         private void Awake()
         {
+            lastRoomVisited = firstRoom;
+
             sceneLoadManager = FindObjectOfType<SceneLoadManager>();
 
             if (sceneLoadManager == null)
