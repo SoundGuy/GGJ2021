@@ -120,7 +120,7 @@ namespace Mechanics
 
         void DrawTimePointsListHeader(Rect rect)
         {
-            string name = "Time Point (game time seconds)";
+            string name = "Time Points (game time seconds)";
             EditorGUI.LabelField(rect, name);
         }
 
