@@ -215,14 +215,14 @@ MonoBehaviour:
   m_timePoints:
   - label: Quarantine Start
     timeEffects: 1
-    activationTime: 238000
+    activationTime: 12000
   - label: Quarantine End
     timeEffects: 2
     activationTime: 300000
   - label: Quanza
     timeEffects: 4
     activationTime: 450000
-  m_maxTimePerRoomVisits: 60ea0000c0d4010080a90300e093040000530700
+  m_maxTimePerRoomVisits: 48e80100605b030080a90300e093040000530700
   m_activeTimePointIndex: 0
 --- !u!114 &509702095
 MonoBehaviour:
@@ -243,6 +243,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 550976721023390328, guid: b7fac165a7532114b9128d8c86188f31,
+        type: 3}
+      propertyPath: m_dateFormat
+      value: 'dd/MM/yyyy : hh tt'
+      objectReference: {fileID: 0}
     - target: {fileID: 7127287300718493052, guid: b7fac165a7532114b9128d8c86188f31,
         type: 3}
       propertyPath: m_Name
