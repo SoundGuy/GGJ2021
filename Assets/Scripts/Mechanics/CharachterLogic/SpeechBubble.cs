@@ -14,7 +14,7 @@ namespace Mechanics.CharachterLogic
             speech.text = phrase;
         }
             
-        void Start()
+        void Awake()
         {
             /*speech = GetComponentInChildren<TextMeshProUGUI>();
             if (!speech)
