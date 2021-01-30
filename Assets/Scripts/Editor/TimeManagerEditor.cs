@@ -15,6 +15,7 @@ namespace Mechanics
         SerializedProperty maxTimePerRoomVists;
         SerializedProperty activeTimePointIndex;
         SerializedProperty progressTimePerRoomVisit;
+        SerializedProperty timeScale;
 
         //The Reorderable list we will be working with
         ReorderableList timePointsList;
@@ -29,6 +30,7 @@ namespace Mechanics
             maxTimePerRoomVists = serializedObject.FindProperty("m_maxTimePerRoomVisits");
             activeTimePointIndex = serializedObject.FindProperty("m_activeTimePointIndex");
             progressTimePerRoomVisit = serializedObject.FindProperty("m_progressTimePerRoomVisit");
+            timeScale = serializedObject.FindProperty("m_timeScale");
 
             timePointsList = new ReorderableList(serializedObject, timePoints, false, true, true, true);
             maxTimePointsPerRoomList = new ReorderableList(serializedObject, maxTimePerRoomVists, false, true, true, true);
@@ -118,13 +120,13 @@ namespace Mechanics
 
         void DrawTimePointsListHeader(Rect rect)
         {
-            string name = "Time Point (seconds)";
+            string name = "Time Points (game time seconds)";
             EditorGUI.LabelField(rect, name);
         }
 
         void DrawMaxTimePerVisitListHeader(Rect rect)
         {
-            string name = "Max Time Per Room Vists (seconds)";
+            string name = "Max Time Per Room Vists (game time seconds)";
             EditorGUI.LabelField(rect, name);
         }
 
@@ -140,6 +142,7 @@ namespace Mechanics
 
             serializedObject.Update();
 
+            EditorGUILayout.PropertyField(timeScale);
             EditorGUILayout.PropertyField(progressTimePerRoomVisit);
 
             maxTimePointsPerRoomList.DoLayoutList();

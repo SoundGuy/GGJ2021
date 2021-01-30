@@ -534,7 +534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_startDate: 1/1/2020
-  m_dateFormat: 'dd/MM/yyyy : hh'
+  m_dateFormat: 'dd/MM/yyyy : HH'
 --- !u!114 &8080586195287626985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,6 +549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   mouseSensitivity: -1
+  activeCamera: {fileID: 0}
   flatCamera: {fileID: 7110037779566475150}
   pointerCamera: {fileID: 8222015109459042097}
   arLeftCamera: {fileID: 2172582722649648177}

@@ -9,6 +9,25 @@ namespace Mechanics
     {
         public Action<EGameEffects> OnTimePointReached;
 
+        public float ElapsedTime
+        {
+            get
+            {
+                return m_internalElapsedTime * m_timeScale;
+            }
+        }
+
+        public float UnscaledElapsedTime
+        {
+            get
+            {
+                return m_internalElapsedTime;
+            }
+        }
+
+        [SerializeField]
+        private float m_timeScale = 1f;
+
         [SerializeField]
         private float m_progressTimePerRoomVisit = 50f;
 
@@ -28,7 +47,7 @@ namespace Mechanics
 
         private ERoomID m_lastRoomVisited;
 
-        public float ElapsedTime { get; private set; }
+        private float m_internalElapsedTime;
 
         public void ProgressTime(float progressBy)
         {
@@ -37,14 +56,14 @@ namespace Mechanics
             {
                 int currentRoomMaxTime = m_maxTimePerRoomVisits[m_roomsManager.RoomsVisited];
 
-                if (ElapsedTime <= currentRoomMaxTime)
+                if (m_internalElapsedTime <= currentRoomMaxTime)
                 {
-                    ElapsedTime += progressBy;
+                    m_internalElapsedTime += progressBy;
                 }
             }
             else
             {
-                ElapsedTime += progressBy;
+                m_internalElapsedTime += progressBy;
             }
 
             bool shouldStopPointProgress = ( m_timePoints.Count == 0 || (m_activeTimePointIndex + 1 >= m_timePoints.Count) );
@@ -53,7 +72,7 @@ namespace Mechanics
 
             TimePoint nextTimePoint = m_timePoints[m_activeTimePointIndex + 1];
             if (m_activeTimePointIndex < m_timePoints.Count &&
-                ElapsedTime >= nextTimePoint.activationTime)
+                m_internalElapsedTime >= nextTimePoint.activationTime)
             {
                 {
                     m_activeTimePointIndex++;
@@ -66,7 +85,7 @@ namespace Mechanics
 
         private void Awake()
         {
-            ElapsedTime = 0;
+            m_internalElapsedTime = 0;
             m_activeTimePointIndex = -1;
             m_roomsManager = FindObjectOfType<RoomsManager>();
 
