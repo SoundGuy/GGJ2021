@@ -11,9 +11,21 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
 
     [SerializeField] private bool quarantine;
+
+
+    private static MusicManager _instance;
     // Start is called before the first frame update
     void Start()
     {
+        if (!_instance)
+        {
+            _instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+        
         _audioSource = GetComponent<AudioSource>();
         _audioSource.PlayOneShot(quarantine ?  Song2 : Song1);
         
