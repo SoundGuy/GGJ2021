@@ -5,6 +5,9 @@ namespace Mechanics
 { 
     public class TimePassageManager : MonoBehaviour
     {
+        [SerializeField]
+        private float timeScale = 1f;
+
         private TimeManager timeManager;
 
         public void Awake()
@@ -19,7 +22,7 @@ namespace Mechanics
 
         private void Update()
         {
-            timeManager.ProgressTime(Time.deltaTime);
+            timeManager.ProgressTime(Time.deltaTime * timeScale);
         }
     }
 }
