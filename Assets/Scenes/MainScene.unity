@@ -243,11 +243,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 550976721023390328, guid: b7fac165a7532114b9128d8c86188f31,
-        type: 3}
-      propertyPath: m_dateFormat
-      value: 'dd/MM/yyyy : hh tt'
-      objectReference: {fileID: 0}
     - target: {fileID: 7127287300718493052, guid: b7fac165a7532114b9128d8c86188f31,
         type: 3}
       propertyPath: m_Name
