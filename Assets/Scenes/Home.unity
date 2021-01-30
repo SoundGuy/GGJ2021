@@ -3532,6 +3532,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Song1: {fileID: 8300000, guid: 7179135262f069b418f00ae9500c9518, type: 3}
   Song2: {fileID: 8300000, guid: bb6ff19eac209a04583c934d96eadfd2, type: 3}
+  BGMusic: {fileID: 8300000, guid: 5f38f9bb5be57c44a9b5eb624bd0f304, type: 3}
+  _audioSource: {fileID: 0}
   quarantine: 0
 --- !u!82 &1219929364
 AudioSource:
@@ -5205,6 +5207,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Song1: {fileID: 0}
   Song2: {fileID: 0}
+  BGMusic: {fileID: 0}
+  _audioSource: {fileID: 0}
   quarantine: 0
 --- !u!1001 &1881732309
 PrefabInstance:
