@@ -24,9 +24,9 @@ namespace Mechanics
         [SerializeField]
         private int m_activeTimePointIndex;
 
-        private float m_elapsedTime;
-
         private RoomsManager m_roomsManager;
+
+        public float ElapsedTime { get; private set; }
 
         public void ProgressTime(float progressBy)
         {
@@ -35,14 +35,14 @@ namespace Mechanics
             {
                 int currentRoomMaxTime = m_maxTimePerRoomVisits[m_roomsManager.RoomsVisited];
 
-                if (m_elapsedTime <= currentRoomMaxTime)
+                if (ElapsedTime <= currentRoomMaxTime)
                 {
-                    m_elapsedTime += progressBy;
+                    ElapsedTime += progressBy;
                 }
             }
             else
             {
-                m_elapsedTime += progressBy;
+                ElapsedTime += progressBy;
             }
 
             bool shouldStopPointProgress = ( m_timePoints.Count == 0 || (m_activeTimePointIndex + 1 >= m_timePoints.Count) );
@@ -51,7 +51,7 @@ namespace Mechanics
 
             TimePoint nextTimePoint = m_timePoints[m_activeTimePointIndex + 1];
             if (m_activeTimePointIndex < m_timePoints.Count &&
-                m_elapsedTime >= nextTimePoint.activationTime)
+                ElapsedTime >= nextTimePoint.activationTime)
             {
                 {
                     m_activeTimePointIndex++;
@@ -64,7 +64,7 @@ namespace Mechanics
 
         private void Awake()
         {
-            m_elapsedTime = 0;
+            ElapsedTime = 0;
             m_activeTimePointIndex = -1;
             m_roomsManager = FindObjectOfType<RoomsManager>();
 
