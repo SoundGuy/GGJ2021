@@ -68,7 +68,7 @@ namespace Mechanics
 
             EditorGUI.PropertyField(
                 new Rect(currentElementPos.x, currentElementPos.y, 20, EditorGUIUtility.singleLineHeight),
-                element.FindPropertyRelative("timeEffect"),
+                element.FindPropertyRelative("timeEffects"),
                 GUIContent.none
             );
 
