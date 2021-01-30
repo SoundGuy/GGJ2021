@@ -12,7 +12,7 @@ namespace Mechanics
         //The array property we will edit
         SerializedProperty timePoints;
         SerializedProperty progressDurationSeconds;
-        SerializedProperty maxTimeLimitPerRoomVists;
+        SerializedProperty maxTimePerRoomVists;
         SerializedProperty activeTimePointIndex;
         SerializedProperty progressTimePerRoomVisit;
 
@@ -26,12 +26,12 @@ namespace Mechanics
         {
             timePoints = serializedObject.FindProperty("m_timePoints");
             progressDurationSeconds = serializedObject.FindProperty("m_progressDurationSeconds");
-            maxTimeLimitPerRoomVists = serializedObject.FindProperty("m_maxTimeLimitPerRoomVists");
+            maxTimePerRoomVists = serializedObject.FindProperty("m_maxTimePerRoomVisits");
             activeTimePointIndex = serializedObject.FindProperty("m_activeTimePointIndex");
             progressTimePerRoomVisit = serializedObject.FindProperty("m_progressTimePerRoomVisit");
 
             timePointsList = new ReorderableList(serializedObject, timePoints, false, true, true, true);
-            maxTimePointsPerRoomList = new ReorderableList(serializedObject, maxTimeLimitPerRoomVists, false, true, true, true);
+            maxTimePointsPerRoomList = new ReorderableList(serializedObject, maxTimePerRoomVists, false, true, true, true);
 
             timePointsList.drawElementCallback = DrawTimePointsListItem;
             timePointsList.drawHeaderCallback = DrawTimePointsListHeader;

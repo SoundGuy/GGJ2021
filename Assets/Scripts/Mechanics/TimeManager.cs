@@ -16,7 +16,7 @@ namespace Mechanics
         private List<TimePoint> m_timePoints;
 
         [SerializeField]
-        private List<int> m_maxTimeLimitPerRoomVists;
+        private List<int> m_maxTimePerRoomVisits;
 
         [SerializeField]
         private int m_activeTimePointIndex;
@@ -35,19 +35,19 @@ namespace Mechanics
 
         public void ProgressTime(float progressBy)
         {
-            if (m_maxTimeLimitPerRoomVists.Count == 0)
+            bool shouldCheckMaxRoomTime = (m_maxTimePerRoomVisits.Count > 0 && m_roomsManager.RoomsVisited < m_maxTimePerRoomVisits.Count);
+            if (shouldCheckMaxRoomTime)
             {
-                m_elapsedTime += progressBy;
-            }
-            else
-            {
-                int currentRoomTimeLimit = m_maxTimeLimitPerRoomVists[m_roomsManager.RoomsVisited];
+                int currentRoomMaxTime = m_maxTimePerRoomVisits[m_roomsManager.RoomsVisited];
 
-                if (m_elapsedTime <= currentRoomTimeLimit)
+                if (m_elapsedTime <= currentRoomMaxTime)
                 {
                     m_elapsedTime += progressBy;
                 }
-
+            }
+            else
+            {
+                m_elapsedTime += progressBy;
             }
 
             bool shouldStopPointProgress = ( m_timePoints.Count == 0 || (m_activeTimePointIndex + 1 >= m_timePoints.Count) );
