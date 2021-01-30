@@ -9,15 +9,39 @@ namespace Mechanics
         public int RoomsVisited { get; private set; }
 
         [SerializeField]
-        private string firstRoom = "Home";
+        private ERoomID firstRoom = ERoomID.HOME;
 
         SceneLoadManager sceneLoadManager;
 
-        public void UserVisitedRoom(ERoomID roomId)
+        public void VisitRoom(ERoomID roomId)
         {
             RoomsVisited++;
 
             OnRoomVisited?.Invoke(roomId);
+
+            ChangeRoomById(roomId);
+        }
+
+        private void ChangeRoomById(ERoomID roomId)
+        {
+            switch (roomId)
+            {
+                case ERoomID.HOME:
+                    sceneLoadManager.ChangeScene("Home");
+                    break;
+                case ERoomID.COFFEE:
+                    sceneLoadManager.ChangeScene("CoffeeShop");
+                    break;
+                case ERoomID.PARK:
+                    sceneLoadManager.ChangeScene("Park");
+                    break;
+                case ERoomID.BEACH:
+                    sceneLoadManager.ChangeScene("Beach");
+                    break;
+                case ERoomID.CONFERENCE:
+                    sceneLoadManager.ChangeScene("ConferenceRoom");
+                    break;
+            }
         }
 
         private void Awake()
@@ -29,18 +53,16 @@ namespace Mechanics
                 throw new System.Exception("Missing a SceneLoadManager in the scene");
             }
 
-            sceneLoadManager.ChangeScene(firstRoom);
+            ChangeRoomById(firstRoom);
+        }
+
+        public enum ERoomID
+        {
+            HOME,
+            COFFEE,
+            PARK,
+            BEACH,
+            CONFERENCE,
         }
     }
-
-    public enum ERoomID
-    {
-        HOME,
-        HOLOGRAMS,
-        COFFEE,
-        PARK,
-        BEACH,
-        CONFERENCE,
-    }
 }
-
