@@ -141,7 +141,7 @@ public class FlatController : MonoBehaviour
         SetCanvas2D(null);
         break;
       case WebXRState.AR:
-        SetControllerInput(viewsCount == 2);
+        SetControllerInput(viewsCount == 2, true);
         SetCanvas2D(viewsCount == 2 ? null : arLeftCamera);
         break;
     }
@@ -173,13 +173,13 @@ public class FlatController : MonoBehaviour
     UpdateCanvases(activeCamera);
   }
 
-  void SetControllerInput(bool active)
+  void SetControllerInput(bool active, bool isAR = false)
   {
     if (controllerInputModule != null && standaloneInputModule != null)
     {
       controllerInputModule.enabled = active;
       standaloneInputModule.enabled = !active;
-      UpdateCanvases(active ? pointerCamera : flatCamera);
+      UpdateCanvases(active ? pointerCamera : (isAR ? arLeftCamera : flatCamera));
     }
   }
 
