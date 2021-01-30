@@ -17,7 +17,10 @@ namespace Mechanics
 
         public void VisitRoom(ERoomID roomId)
         {
-            if (lastRoomVisited == roomId) return;
+            if (lastRoomVisited == roomId)
+            {
+                RoomVisited(roomId);
+            }
 
             lastRoomVisited = roomId;
 
