@@ -17,6 +17,7 @@ public class SceneLoadManager : MonoBehaviour
             SceneManager.UnloadSceneAsync(activeLevel);
         }
 
+        activeLevel = sceneName;
         SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
     }
 
