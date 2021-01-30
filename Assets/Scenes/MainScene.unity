@@ -197,7 +197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4addf901df10a428d26dd2f95e94ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeScale: 1000
 --- !u!114 &509702094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,19 +209,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee9bc54111c6f34a88d9a686e749a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_progressTimePerRoomVisit: 3500
+  m_timeScale: 3600
+  m_progressTimePerRoomVisit: 10
   m_progressDurationSeconds: 0
   m_timePoints:
   - label: Quarantine Start
     timeEffects: 1
-    activationTime: 12000
+    activationTime: 45
   - label: Quarantine End
     timeEffects: 2
-    activationTime: 300000
+    activationTime: 105
   - label: Quanza
     timeEffects: 4
-    activationTime: 450000
-  m_maxTimePerRoomVisits: 48e80100605b030080a90300e093040000530700
+    activationTime: 160
+  m_maxTimePerRoomVisits: 3c00000078000000fa0000005e01000090010000
   m_activeTimePointIndex: 0
 --- !u!114 &509702095
 MonoBehaviour:
