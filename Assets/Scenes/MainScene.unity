@@ -135,6 +135,8 @@ GameObject:
   - component: {fileID: 509702091}
   - component: {fileID: 509702090}
   - component: {fileID: 509702092}
+  - component: {fileID: 509702094}
+  - component: {fileID: 509702093}
   m_Layer: 0
   m_Name: Persistent Managers
   m_TagString: Untagged
@@ -180,7 +182,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16324428ad65305419e6bc5bfa39751f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstRoom: ConferenceRoom
+  firstRoom: 0
+--- !u!114 &509702093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509702089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c4addf901df10a428d26dd2f95e94ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &509702094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509702089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee9bc54111c6f34a88d9a686e749a34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_progressTimePerRoomVisit: 50
+  m_progressDurationSeconds: 0
+  m_timePoints: []
+  m_maxTimePerRoom: 
+  m_activeTimePointIndex: 0
 --- !u!1001 &511041704
 PrefabInstance:
   m_ObjectHideFlags: 0
