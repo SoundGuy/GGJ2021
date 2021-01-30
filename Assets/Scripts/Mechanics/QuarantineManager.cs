@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Mechanics
@@ -31,20 +32,36 @@ namespace Mechanics
             {
                 StartQuarantine();
             }
-            else if ((gameEffects & EGameEffects.QUARANTINE_START) == EGameEffects.QUARANTINE_END)
+            else if ((gameEffects & EGameEffects.QUARANTINE_END) == EGameEffects.QUARANTINE_END)
             {
                 EndQuarantine();
             }
         }
 
+        [ContextMenu("Start Quarantine")]
         public void StartQuarantine()
         {
             m_roomManager.VisitRoom(ERoomID.HOME);
+
+            m_roomManager.OnRoomVisited += OnRoomVisited;
+        }
+
+
+        public void OnRoomVisited(ERoomID roomId)
+        {
+            foreach (QuarantineElement quarantined in GameObject.FindObjectsOfType<QuarantineElement>(true))
+            {
+                quarantined.gameObject.SetActive(true);
+            }
         }
 
         public void EndQuarantine()
         {
 
+            foreach (QuarantineElement quarantined in GameObject.FindObjectsOfType<QuarantineElement>(false))
+            {
+                quarantined.gameObject.SetActive(false);
+            }
         }
     }
 }
