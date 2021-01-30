@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoadManager : MonoBehaviour
 {
+    public System.Action OnNewSceneActive;
+
     private const string playerControllerTag = "Player";
     private const string playerSpawnTag = "PlayerSpawn";
 
@@ -48,6 +50,8 @@ public class SceneLoadManager : MonoBehaviour
 
             playerController.transform.SetPositionAndRotation(playerSpawn.transform.position, playerSpawn.transform.rotation);
             flatController.ResetValues();
+
+            OnNewSceneActive?.Invoke();
         }
     }
 }

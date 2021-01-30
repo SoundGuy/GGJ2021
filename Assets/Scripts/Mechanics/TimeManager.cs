@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
@@ -6,6 +7,8 @@ namespace Mechanics
 {
     public class TimeManager : MonoBehaviour
     {
+        public Action<EGameEffects> OnTimePointReached;
+
         [SerializeField]
         private float m_progressTimePerRoomVisit = 50f;
 
@@ -24,14 +27,6 @@ namespace Mechanics
         private float m_elapsedTime;
 
         private RoomsManager m_roomsManager;
-
-        public TimePoint ActiveTimePoint
-        {
-            get
-            {
-                return m_timePoints[m_activeTimePointIndex];
-            }
-        }
 
         public void ProgressTime(float progressBy)
         {
@@ -60,6 +55,9 @@ namespace Mechanics
             {
                 {
                     m_activeTimePointIndex++;
+
+                    TimePoint activeTimePoint = m_timePoints[m_activeTimePointIndex];
+                    OnTimePointReached(activeTimePoint.timeEffects);
                 }
             }
         }
@@ -92,18 +90,11 @@ namespace Mechanics
         }
     }
 
-    public enum ETimeEffect
-    {
-        NONE,
-        QUARANTINE_START,
-        QUARANTINE_END,
-    }
-
     [System.Serializable]
     public struct TimePoint
     {
         public string label;
-        public ETimeEffect timeEffect;
+        public EGameEffects timeEffects;
         public float activationTime;
     }
 }

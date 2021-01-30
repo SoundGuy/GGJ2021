@@ -1,24 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Mechanics;
 
 public class Door : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject m_doorLock;
+
+    [SerializeField]
+    private ERoomID m_destinationRoomId;
+
+    private RoomsManager m_roomsManager;
 
     public void OpenDoor()
     {
         // Check if we can get out or not.
-        gameObject.SetActive(false);
+        if (m_doorLock.activeSelf == false)
+        {
+            m_roomsManager.VisitRoom(m_destinationRoomId);
+        }
     }
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
-    }
+        m_roomsManager = FindObjectOfType<RoomsManager>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (m_roomsManager == null)
+        {
+            throw new System.Exception("Missing component of type RoomsManager in the scene");
+        }
     }
 }
