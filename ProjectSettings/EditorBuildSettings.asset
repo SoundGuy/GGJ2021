@@ -18,8 +18,8 @@ EditorBuildSettings:
     path: Assets/Scenes/CoffeeShop.unity
     guid: b1e052ec07e5a094fbe716f8a90e511f
   - enabled: 1
-    path: Assets/Scenes/ConfrenceRoom.unity
-    guid: fb359750a8c106545a4003250f92fdee
+    path: Assets/Scenes/ConferenceRoom.unity
+    guid: f7e2ed4577356ff42a8fde71b2e4bc32
   - enabled: 1
     path: Assets/Scenes/Park.unity
     guid: 36bdb022908ebd44fbf1dc8f2f1fc2d8
