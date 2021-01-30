@@ -132,7 +132,7 @@ public class FlatController : MonoBehaviour
     }
   }
 
-  void ResetValues()
+  public void ResetValues()
   {
     originalRotation = _transform.localRotation;
     flatCameraOrigin = flatCameraTransform.localRotation;

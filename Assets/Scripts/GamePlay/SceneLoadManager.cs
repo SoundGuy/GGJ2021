@@ -8,7 +8,8 @@ public class SceneLoadManager : MonoBehaviour
 
     private string activeLevel = "";
 
-    private GameObject playerController;
+    private GameObject playerController = null;
+    private FlatController flatController = null;
 
     public void ChangeScene(string sceneName)
     {
@@ -25,10 +26,15 @@ public class SceneLoadManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         playerController = GameObject.FindGameObjectWithTag(playerControllerTag);
+        flatController = playerController.GetComponent<FlatController>();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadMode)
     {
+        if (string.IsNullOrEmpty(activeLevel) && scene.name != "MainScene")
+        {
+          activeLevel = scene.name;
+        }
         if (loadMode == LoadSceneMode.Additive)
         {
             SceneManager.SetActiveScene(scene);
@@ -41,6 +47,7 @@ public class SceneLoadManager : MonoBehaviour
             }
 
             playerController.transform.SetPositionAndRotation(playerSpawn.transform.position, playerSpawn.transform.rotation);
+            flatController.ResetValues();
         }
     }
 }
