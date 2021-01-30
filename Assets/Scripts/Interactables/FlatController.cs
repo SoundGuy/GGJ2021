@@ -181,7 +181,10 @@ public class FlatController : MonoBehaviour
     var canvases = FindObjectsOfType<Canvas>(true);
     foreach (var canvas in canvases)
     {
-      canvas.worldCamera = camera;
+      if (canvas != timeCanvas2D)
+      {
+        canvas.worldCamera = camera;
+      }
     }
   }
 
