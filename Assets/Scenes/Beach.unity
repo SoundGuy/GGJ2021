@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speech: {fileID: 0}
+  emoji: {fileID: 0}
 --- !u!114 &92188303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,12 +568,17 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1393851251}
     m_Modifications:
     - target: {fileID: 7127287300718493052, guid: b7fac165a7532114b9128d8c86188f31,
         type: 3}
       propertyPath: m_Name
       value: WebXRCameraSet
+      objectReference: {fileID: 0}
+    - target: {fileID: 7127287300718493052, guid: b7fac165a7532114b9128d8c86188f31,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7132763060686880784, guid: b7fac165a7532114b9128d8c86188f31,
         type: 3}
@@ -582,7 +588,7 @@ PrefabInstance:
     - target: {fileID: 7132763060686880784, guid: b7fac165a7532114b9128d8c86188f31,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7132763060686880784, guid: b7fac165a7532114b9128d8c86188f31,
         type: 3}
@@ -592,27 +598,27 @@ PrefabInstance:
     - target: {fileID: 7132763060686880784, guid: b7fac165a7532114b9128d8c86188f31,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.72
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7132763060686880784, guid: b7fac165a7532114b9128d8c86188f31,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7132763060686880784, guid: b7fac165a7532114b9128d8c86188f31,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7132763060686880784, guid: b7fac165a7532114b9128d8c86188f31,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7132763060686880784, guid: b7fac165a7532114b9128d8c86188f31,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7132763060686880784, guid: b7fac165a7532114b9128d8c86188f31,
         type: 3}
@@ -646,6 +652,12 @@ MonoBehaviour:
 --- !u!20 &511041706 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8222015109459042097, guid: b7fac165a7532114b9128d8c86188f31,
+    type: 3}
+  m_PrefabInstance: {fileID: 511041704}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &511041707 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7132763060686880784, guid: b7fac165a7532114b9128d8c86188f31,
     type: 3}
   m_PrefabInstance: {fileID: 511041704}
   m_PrefabAsset: {fileID: 0}
@@ -1041,6 +1053,7 @@ MonoBehaviour:
   conversations:
   - {fileID: 11400000, guid: d82dbcf19ba34ac4d9aba08717a5ddcf, type: 2}
   _character: {fileID: 0}
+  emojiSpriteSheet: []
 --- !u!1 &814675069
 GameObject:
   m_ObjectHideFlags: 0
@@ -2156,6 +2169,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1366663198}
   m_CullTransparentMesh: 0
+--- !u!1 &1393851250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1393851251}
+  m_Layer: 0
+  m_Name: PlayerSpawn
+  m_TagString: PlayerSpawn
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1393851251
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393851250}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 9.25, y: 0, z: 4.72}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 511041707}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1509603935
 GameObject:
   m_ObjectHideFlags: 0

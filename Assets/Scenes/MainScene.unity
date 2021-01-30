@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16324428ad65305419e6bc5bfa39751f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstRoom: Home
+  firstRoom: ConferenceRoom
 --- !u!1001 &511041704
 PrefabInstance:
   m_ObjectHideFlags: 0
