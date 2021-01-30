@@ -11,6 +11,8 @@ public class FlatController : MonoBehaviour
   public float speed = 10f;
   public float mouseSensitivity = 1f;
 
+  public Camera activeCamera;
+
   [SerializeField]
   private Camera flatCamera = null;
   [SerializeField]
@@ -166,6 +168,11 @@ public class FlatController : MonoBehaviour
     rotationY = 0f;
   }
 
+  public void UpdateCamera()
+  {
+    UpdateCanvases(activeCamera);
+  }
+
   void SetControllerInput(bool active)
   {
     if (controllerInputModule != null && standaloneInputModule != null)
@@ -186,6 +193,8 @@ public class FlatController : MonoBehaviour
         canvas.worldCamera = camera;
       }
     }
+
+    activeCamera = camera;
   }
 
   void Update()

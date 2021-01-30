@@ -79,6 +79,10 @@ namespace Mechanics
 #else
             ChangeRoomById(firstRoom);
 #endif
+
+            FlatController flatController = FindObjectOfType<FlatController>();
+
+            OnRoomVisited += (ERoomID) => { flatController.UpdateCamera(); };
         }
 
         [ContextMenu("Visit Park")]
