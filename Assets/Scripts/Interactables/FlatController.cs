@@ -16,9 +16,13 @@ public class FlatController : MonoBehaviour
   [SerializeField]
   private Camera pointerCamera = null;
   [SerializeField]
+  private Camera arLeftCamera = null;
+  [SerializeField]
   private StandaloneInputModule standaloneInputModule;
   [SerializeField]
   private ControllerInputModule controllerInputModule;
+  [SerializeField]
+  private Canvas timeCanvas2D = null;
 
   private Transform _transform;
   private Transform flatCameraTransform;
@@ -66,6 +70,7 @@ public class FlatController : MonoBehaviour
     {
       Debug.Log($"XRGeneralSettings is null.");
       SetControllerInput(false);
+      SetCanvas2D(flatCamera);
       return;
     }
 
@@ -74,6 +79,7 @@ public class FlatController : MonoBehaviour
     {
       Debug.Log($"XRManagerSettings is null.");
       SetControllerInput(false);
+      SetCanvas2D(flatCamera);
       return;
     }
 
@@ -82,6 +88,7 @@ public class FlatController : MonoBehaviour
     {
       Debug.Log($"XRLoader is null.");
       SetControllerInput(false);
+      SetCanvas2D(flatCamera);
       return;
     }
 
@@ -91,16 +98,19 @@ public class FlatController : MonoBehaviour
     {
       Debug.Log($"XRInput is null.");
       SetControllerInput(false);
+      SetCanvas2D(flatCamera);
       return;
     }
 
     mainCameraIsFlat = false;
     SetControllerInput(true);
+    SetCanvas2D(null);
   }
 #else
   void Start()
   {
     SetControllerInput(false);
+    SetCanvas2D(flatCamera);
   }
 #endif
 
@@ -122,13 +132,29 @@ public class FlatController : MonoBehaviour
       case WebXRState.NORMAL:
         ResetValues();
         SetControllerInput(false);
+        SetCanvas2D(flatCamera);
         break;
       case WebXRState.VR:
         SetControllerInput(true);
+        SetCanvas2D(null);
         break;
       case WebXRState.AR:
         SetControllerInput(viewsCount == 2);
+        SetCanvas2D(viewsCount == 2 ? null : arLeftCamera);
         break;
+    }
+  }
+
+  private void SetCanvas2D(Camera camera)
+  {
+    if (camera != null)
+    {
+      timeCanvas2D.worldCamera = camera;
+      timeCanvas2D.gameObject.SetActive(true);
+    }
+    else
+    {
+      timeCanvas2D.gameObject.SetActive(false);
     }
   }
 
