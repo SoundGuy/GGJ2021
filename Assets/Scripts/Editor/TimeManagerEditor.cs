@@ -120,13 +120,13 @@ namespace Mechanics
 
         void DrawTimePointsListHeader(Rect rect)
         {
-            string name = "Time Point (seconds)";
+            string name = "Time Point (game time seconds)";
             EditorGUI.LabelField(rect, name);
         }
 
         void DrawMaxTimePerVisitListHeader(Rect rect)
         {
-            string name = "Max Time Per Room Vists (seconds)";
+            string name = "Max Time Per Room Vists (game time seconds)";
             EditorGUI.LabelField(rect, name);
         }
 
