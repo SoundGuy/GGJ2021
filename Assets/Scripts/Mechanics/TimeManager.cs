@@ -32,12 +32,24 @@ namespace Mechanics
 
         public void ProgressTime(float progressBy)
         {
-            int currentRoomTimeLimit = m_maxTimeLimitPerRoomVists[m_roomsManager.RoomsVisited];
-
-            if (m_elapsedTime <= currentRoomTimeLimit)
+            if (m_maxTimeLimitPerRoomVists.Count == 0)
             {
                 m_elapsedTime += progressBy;
             }
+            else
+            {
+                int currentRoomTimeLimit = m_maxTimeLimitPerRoomVists[m_roomsManager.RoomsVisited];
+
+                if (m_elapsedTime <= currentRoomTimeLimit)
+                {
+                    m_elapsedTime += progressBy;
+                }
+
+            }
+
+            bool shouldStopPointProgress = ( m_timePoints.Count == 0 || (m_activeTimePointIndex + 1 >= m_timePoints.Count) );
+
+            if (shouldStopPointProgress) return;
 
             TimePoint nextTimePoint = m_timePoints[m_activeTimePointIndex + 1];
             if (m_activeTimePointIndex < m_timePoints.Count &&
