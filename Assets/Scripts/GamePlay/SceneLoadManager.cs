@@ -6,7 +6,7 @@ public class SceneLoadManager : MonoBehaviour
     private const string playerControllerTag = "Player";
     private const string playerSpawnTag = "PlayerSpawn";
 
-    private string activeLevel;
+    private string activeLevel = "";
 
     private GameObject playerController;
 
@@ -34,7 +34,7 @@ public class SceneLoadManager : MonoBehaviour
 
             GameObject playerSpawn = GameObject.FindGameObjectWithTag(playerSpawnTag);
 
-            if (playerSpawn)
+            if (playerSpawn == null)
             {
                 throw new System.Exception("No GameObject with the " + playerSpawnTag + " was found in scene - " + scene.name);
             }
