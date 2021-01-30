@@ -62,9 +62,9 @@ namespace Mechanics
 
             currentElementPos.x += 120;
 
-            EditorGUI.LabelField(new Rect(currentElementPos.x, currentElementPos.y, 60, EditorGUIUtility.singleLineHeight), "effect");
+            EditorGUI.LabelField(new Rect(currentElementPos.x, currentElementPos.y, 60, EditorGUIUtility.singleLineHeight), "effects");
 
-            currentElementPos.x += 40;
+            currentElementPos.x += 50;
 
             EditorGUI.PropertyField(
                 new Rect(currentElementPos.x, currentElementPos.y, 20, EditorGUIUtility.singleLineHeight),
