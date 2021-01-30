@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.43968016, g: 0.4880873, b: 0.56830984, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -165,13 +165,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 509702089}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.0013102966, y: -0.00017221291, z: -0.0016682988, w: 0.99999774}
   m_LocalPosition: {x: 0.14255548, y: 1.0498478, z: -1.0863655}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.15, y: -0.02, z: -0.191}
 --- !u!114 &509702092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4addf901df10a428d26dd2f95e94ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeScale: 1
+  timeScale: 100
 --- !u!114 &509702094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,10 +210,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee9bc54111c6f34a88d9a686e749a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_progressTimePerRoomVisit: 0
+  m_progressTimePerRoomVisit: 3500
   m_progressDurationSeconds: 0
-  m_timePoints: []
-  m_maxTimePerRoomVisits: 
+  m_timePoints:
+  - label: Quarantine Start
+    timeEffects: 1
+    activationTime: 238000
+  - label: Quarantine End
+    timeEffects: 2
+    activationTime: 300000
+  - label: Quanza
+    timeEffects: 4
+    activationTime: 450000
+  m_maxTimePerRoomVisits: 60ea0000c0d4010080a90300e093040000530700
   m_activeTimePointIndex: 0
 --- !u!114 &509702095
 MonoBehaviour:
