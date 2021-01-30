@@ -52,8 +52,18 @@ namespace Mechanics
             {
                 throw new System.Exception("Missing a SceneLoadManager in the scene");
             }
-
+#if UNITY_EDITOR
+            if (UnityEngine.SceneManagement.SceneManager.sceneCount > 1)
+            {
+              // TODO: check if the other opened scene is actually a room.
+            }
+            else
+            {
+              ChangeRoomById(firstRoom);
+            }
+#else
             ChangeRoomById(firstRoom);
+#endif
         }
 
         [ContextMenu("Visit Park")]
