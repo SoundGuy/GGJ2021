@@ -14,7 +14,7 @@ public class Door : MonoBehaviour
     public void OpenDoor()
     {
         // Check if we can get out or not.
-        if (m_doorLock.activeSelf)
+        if (m_doorLock.activeSelf == false)
         {
             m_roomsManager.VisitRoom(m_destinationRoomId);
         }
