@@ -26,6 +26,8 @@ namespace Mechanics
 
         private RoomsManager m_roomsManager;
 
+        private ERoomID m_lastRoomVisited;
+
         public float ElapsedTime { get; private set; }
 
         public void ProgressTime(float progressBy)
@@ -78,7 +80,12 @@ namespace Mechanics
 
         private void OnRoomVisited(ERoomID roomId)
         {
-            ProgressTime(m_progressTimePerRoomVisit);
+            if (m_lastRoomVisited != roomId)
+            {
+                ProgressTime(m_progressTimePerRoomVisit);
+            }
+
+            m_lastRoomVisited = roomId;
         }
 
         public void OrderTimePoints()

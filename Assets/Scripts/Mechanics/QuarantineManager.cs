@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 namespace Mechanics
@@ -53,6 +53,11 @@ namespace Mechanics
             {
                 quarantined.gameObject.SetActive(true);
             }
+
+            foreach (ReliefElement relieved in GameObject.FindObjectsOfType<ReliefElement>(false))
+            {
+                relieved.gameObject.SetActive(false);
+            }
         }
 
         public void EndQuarantine()
@@ -61,6 +66,11 @@ namespace Mechanics
             foreach (QuarantineElement quarantined in GameObject.FindObjectsOfType<QuarantineElement>(false))
             {
                 quarantined.gameObject.SetActive(false);
+            }
+
+            foreach (ReliefElement relieved in GameObject.FindObjectsOfType<ReliefElement>(true))
+            {
+                relieved.gameObject.SetActive(true);
             }
         }
     }
