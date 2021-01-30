@@ -7,6 +7,9 @@ namespace Mechanics
     public class TimeManager : MonoBehaviour
     {
         [SerializeField]
+        private float m_progressTimePerRoomVisit = 50f;
+
+        [SerializeField]
         private float m_progressDurationSeconds;
 
         [SerializeField]
@@ -71,6 +74,13 @@ namespace Mechanics
             {
                 throw new System.Exception("Missing RoomsManager in the scene");
             }
+
+            m_roomsManager.OnRoomVisited += OnRoomVisited;
+        }
+
+        private void OnRoomVisited(ERoomID roomId)
+        {
+            ProgressTime(m_progressTimePerRoomVisit);
         }
 
         public void OrderTimePoints()

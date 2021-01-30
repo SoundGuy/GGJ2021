@@ -56,13 +56,25 @@ namespace Mechanics
             ChangeRoomById(firstRoom);
         }
 
-        public enum ERoomID
+        [ContextMenu("Visit Park")]
+        public void VisitPark()
         {
-            HOME,
-            COFFEE,
-            PARK,
-            BEACH,
-            CONFERENCE,
+            VisitRoom(ERoomID.PARK);
         }
+
+        [ContextMenu("Visit Conference Room")]
+        public void VisitConferenceRoom()
+        {
+            VisitRoom(ERoomID.CONFERENCE);
+        }
+    }
+
+    public enum ERoomID
+    {
+        HOME,
+        COFFEE,
+        PARK,
+        BEACH,
+        CONFERENCE,
     }
 }
