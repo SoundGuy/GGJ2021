@@ -92,18 +92,11 @@ namespace Mechanics
         }
     }
 
-    public enum ETimeEffect
-    {
-        NONE,
-        QUARANTINE_START,
-        QUARANTINE_END,
-    }
-
     [System.Serializable]
     public struct TimePoint
     {
         public string label;
-        public ETimeEffect timeEffect;
+        public EGameEffects timeEffect;
         public float activationTime;
     }
 }
