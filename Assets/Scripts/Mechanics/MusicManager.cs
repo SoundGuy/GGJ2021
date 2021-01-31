@@ -29,9 +29,11 @@ public class MusicManager : MonoBehaviour
   //      quarantine = _quarantineElement.enabled && _quarantineElement.gameObject.activeInHierarchy;
         
         _audioSource = GetComponent<AudioSource>();
-        _audioSource.PlayOneShot(quarantine ?  Song2 : Song1);
+        AudioClip clipToPlay = quarantine ? Song2 : Song1;
+        Debug.Log("Playing clip " + clipToPlay);
+        _audioSource.PlayOneShot(clipToPlay );
         
-        DontDestroyOnLoad(this);
+//        DontDestroyOnLoad(this);
         //StartCoroutine(PlayBGMusic());
     }
 
