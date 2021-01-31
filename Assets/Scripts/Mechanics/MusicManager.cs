@@ -12,7 +12,7 @@ public class MusicManager : MonoBehaviour
 
     [SerializeField] private bool quarantine;
 
-    [SerializeField] private QuarantineElement _quarantineElement;
+//    [SerializeField] private QuarantineElement _quarantineElement;
     private static MusicManager _instance;
     // Start is called before the first frame update
     void Start()
@@ -26,7 +26,7 @@ public class MusicManager : MonoBehaviour
             Destroy(this);
         }
 
-        quarantine = _quarantineElement.enabled && _quarantineElement.gameObject.activeInHierarchy;
+  //      quarantine = _quarantineElement.enabled && _quarantineElement.gameObject.activeInHierarchy;
         
         _audioSource = GetComponent<AudioSource>();
         _audioSource.PlayOneShot(quarantine ?  Song2 : Song1);
