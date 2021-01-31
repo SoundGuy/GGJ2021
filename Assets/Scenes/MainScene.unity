@@ -215,13 +215,13 @@ MonoBehaviour:
   m_timePoints:
   - label: Quarantine Start
     timeEffects: 1
-    activationTime: 45
+    activationTime: 160
   - label: Quarantine End
     timeEffects: 2
-    activationTime: 105
+    activationTime: 3600
   - label: Quanza
     timeEffects: 4
-    activationTime: 160
+    activationTime: 3800
   m_maxTimePerRoomVisits: 3c00000078000000fa0000005e01000090010000
   m_activeTimePointIndex: 0
 --- !u!114 &509702095
@@ -371,7 +371,6 @@ MonoBehaviour:
   BGMusic: {fileID: 8300000, guid: 5f38f9bb5be57c44a9b5eb624bd0f304, type: 3}
   _audioSource: {fileID: 0}
   quarantine: 0
-  _quarantineElement: {fileID: 0}
 --- !u!82 &1219929364
 AudioSource:
   m_ObjectHideFlags: 0
