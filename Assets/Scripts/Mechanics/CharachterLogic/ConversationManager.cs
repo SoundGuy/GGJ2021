@@ -24,6 +24,8 @@ namespace Mechanics.CharachterLogic
 
         [SerializeField] private Sprite [] emojiSpriteSheet;
 
+        [SerializeField] private float _timeProgressPerInteraction = 50;
+
         private TimeManager _timeManger;
 
         // Start is called before the first frame update
@@ -111,7 +113,7 @@ namespace Mechanics.CharachterLogic
         public void Converse(int i, string str = "")
         {
             _character.RelationshipIncrease(10);
-            _timeManger.ProgressTime(50);
+            _timeManger.ProgressTime(_timeProgressPerInteraction);
 
             //_speechBubble.Speak(currentConversation.ConvesationResponses[i]);
             _speechBubble.SpeakSprite(emojiSpriteSheet[Random.Range(0,emojiSpriteSheet.Length)]);
