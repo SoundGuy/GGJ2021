@@ -47,7 +47,7 @@ namespace Mechanics
         }
 
 
-        public void OnRoomVisited(ERoomID roomId)
+        public void OnRoomVisited(ERoomID roomId, bool userInitiated)
         {
             foreach (QuarantineElement quarantined in GameObject.FindObjectsOfType<QuarantineElement>(true))
             {
@@ -58,6 +58,8 @@ namespace Mechanics
             {
                 relieved.gameObject.SetActive(false);
             }
+
+            m_roomManager.OnRoomVisited -= OnRoomVisited;
         }
 
         public void EndQuarantine()
@@ -72,6 +74,8 @@ namespace Mechanics
             {
                 relieved.gameObject.SetActive(true);
             }
+
+            m_roomManager.OnRoomVisited -= OnRoomVisited;
         }
     }
 }
