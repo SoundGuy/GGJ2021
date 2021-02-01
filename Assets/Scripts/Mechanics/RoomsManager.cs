@@ -5,7 +5,7 @@ namespace Mechanics
 {
     public class RoomsManager : MonoBehaviour
     {
-        public Action<ERoomID> OnRoomVisited;
+        public Action<ERoomID, bool> OnRoomVisited;
         public int RoomsVisited { get; private set; }
 
         [SerializeField]
@@ -15,18 +15,18 @@ namespace Mechanics
 
         private SceneLoadManager sceneLoadManager;
 
-        public void VisitRoom(ERoomID roomId)
+        public void VisitRoom(ERoomID roomId, bool userInitiated)
         {
             if (lastRoomVisited == roomId)
             {
-                RoomVisited(roomId);
+                RoomVisited(roomId, userInitiated);
                 return;
             }
 
             lastRoomVisited = roomId;
 
             ChangeRoomById(roomId);
-            sceneLoadManager.OnNewSceneActive += () => { RoomVisited(roomId); };
+            sceneLoadManager.OnNewSceneActive += () => { RoomVisited(roomId, userInitiated); };
         }
 
         private void ChangeRoomById(ERoomID roomId)
@@ -51,11 +51,11 @@ namespace Mechanics
             }
         }
 
-        private void RoomVisited(ERoomID roomId)
+        private void RoomVisited(ERoomID roomId, bool userInitiated)
         {
             RoomsVisited++;
 
-            OnRoomVisited?.Invoke(roomId);
+            OnRoomVisited?.Invoke(roomId, userInitiated);
         }
 
         private void Awake()
@@ -83,19 +83,19 @@ namespace Mechanics
 
             FlatController flatController = FindObjectOfType<FlatController>();
 
-            OnRoomVisited += (ERoomID) => { flatController.UpdateCamera(); };
+            OnRoomVisited += (ERoomID, userInitiated) => { flatController.UpdateCamera(); };
         }
 
         [ContextMenu("Visit Park")]
         public void VisitPark()
         {
-            VisitRoom(ERoomID.PARK);
+            VisitRoom(ERoomID.PARK, true);
         }
 
         [ContextMenu("Visit Conference Room")]
         public void VisitConferenceRoom()
         {
-            VisitRoom(ERoomID.CONFERENCE);
+            VisitRoom(ERoomID.CONFERENCE, true);
         }
     }
 

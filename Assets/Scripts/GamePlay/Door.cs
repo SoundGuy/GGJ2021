@@ -16,7 +16,7 @@ public class Door : MonoBehaviour
         // Check if we can get out or not.
         if (m_doorLock.activeSelf == false)
         {
-            m_roomsManager.VisitRoom(m_destinationRoomId);
+            m_roomsManager.VisitRoom(m_destinationRoomId, true);
         }
     }
     // Start is called before the first frame update

@@ -94,9 +94,9 @@ namespace Mechanics
             m_roomsManager.OnRoomVisited += OnRoomVisited;
         }
 
-        private void OnRoomVisited(ERoomID roomId)
+        private void OnRoomVisited(ERoomID roomId, bool userInitiated)
         {
-            if (m_lastRoomVisited != roomId)
+            if (m_lastRoomVisited != roomId && userInitiated)
             {
                 ProgressTime(m_progressTimePerRoomVisit);
             }

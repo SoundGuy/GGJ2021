@@ -41,7 +41,7 @@ namespace Mechanics
         [ContextMenu("Start Quarantine")]
         public void StartQuarantine()
         {
-            m_roomManager.VisitRoom(ERoomID.HOME);
+            m_roomManager.VisitRoom(ERoomID.HOME, false);
 
             m_roomManager.OnRoomVisited += OnRoomVisited;
         }
