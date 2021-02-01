@@ -11,7 +11,6 @@ namespace Mechanics
     {
         //The array property we will edit
         SerializedProperty timePoints;
-        SerializedProperty progressDurationSeconds;
         SerializedProperty maxTimePerRoomVists;
         SerializedProperty activeTimePointIndex;
         SerializedProperty progressTimePerRoomVisit;
@@ -26,7 +25,6 @@ namespace Mechanics
         private void OnEnable()
         {
             timePoints = serializedObject.FindProperty("m_timePoints");
-            progressDurationSeconds = serializedObject.FindProperty("m_progressDurationSeconds");
             maxTimePerRoomVists = serializedObject.FindProperty("m_maxTimePerRoomVisits");
             activeTimePointIndex = serializedObject.FindProperty("m_activeTimePointIndex");
             progressTimePerRoomVisit = serializedObject.FindProperty("m_progressTimePerRoomVisit");

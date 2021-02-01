@@ -32,9 +32,6 @@ namespace Mechanics
         private float m_progressTimePerRoomVisit = 50f;
 
         [SerializeField]
-        private float m_progressDurationSeconds;
-
-        [SerializeField]
         private List<TimePoint> m_timePoints;
 
         [SerializeField]
