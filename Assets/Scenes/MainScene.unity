@@ -210,19 +210,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_timeScale: 3600
-  m_progressTimePerRoomVisit: 10
+  m_progressTimePerRoomVisit: 68
   m_progressDurationSeconds: 0
   m_timePoints:
   - label: Quarantine Start
     timeEffects: 1
-    activationTime: 160
+    activationTime: 2088
   - label: Quarantine End
     timeEffects: 2
     activationTime: 3600
   - label: Quanza
     timeEffects: 4
     activationTime: 3800
-  m_maxTimePerRoomVisits: 3c00000078000000fa0000005e01000090010000
+  m_maxTimePerRoomVisits: f8010000f0030000e8050000e0070000d8090000
   m_activeTimePointIndex: 0
 --- !u!114 &509702095
 MonoBehaviour:
