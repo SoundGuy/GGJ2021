@@ -23,6 +23,9 @@ namespace Mechanics.CharachterLogic
 
 
         [SerializeField] private Sprite [] emojiSpriteSheet;
+
+        private TimeManager _timeManger;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -45,6 +48,12 @@ namespace Mechanics.CharachterLogic
             if (!_character)
             {
                 Debug.LogError("No Character");
+            }
+
+            _timeManger = FindObjectOfType<TimeManager>();
+            if (!_timeManger)
+            {
+                Debug.LogError("Missing TimeManager in scene");
             }
 
             currentConversation = conversations[currentConversationNum];
@@ -102,6 +111,8 @@ namespace Mechanics.CharachterLogic
         public void Converse(int i, string str = "")
         {
             _character.RelationshipIncrease(10);
+            _timeManger.ProgressTime(50);
+
             //_speechBubble.Speak(currentConversation.ConvesationResponses[i]);
             _speechBubble.SpeakSprite(emojiSpriteSheet[Random.Range(0,emojiSpriteSheet.Length)]);
             if (currentConversationNum < conversations.Length -1)
