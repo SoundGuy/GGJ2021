@@ -7307,6 +7307,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FriendBilly
       objectReference: {fileID: 0}
+    - target: {fileID: 1991613981603209869, guid: 2d17b4251f05ea64cac23949a94380f4,
+        type: 3}
+      propertyPath: _timeProgressPerInteraction
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 1991613981603209870, guid: 2d17b4251f05ea64cac23949a94380f4,
         type: 3}
       propertyPath: m_RootOrder

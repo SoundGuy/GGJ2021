@@ -1546,6 +1546,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FriendIlana
       objectReference: {fileID: 0}
+    - target: {fileID: 1991613981603209869, guid: 97214aeeae8661246b7435c5ce3331d0,
+        type: 3}
+      propertyPath: _timeProgressPerInteraction
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1991613981603209870, guid: 97214aeeae8661246b7435c5ce3331d0,
         type: 3}
       propertyPath: m_RootOrder

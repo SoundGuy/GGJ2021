@@ -215,10 +215,10 @@ MonoBehaviour:
   m_timePoints:
   - label: Quarantine Start
     timeEffects: 1
-    activationTime: 2088
+    activationTime: 2100
   - label: Quarantine End
     timeEffects: 2
-    activationTime: 3600
+    activationTime: 2424
   - label: Quanza
     timeEffects: 4
     activationTime: 3800
