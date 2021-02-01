@@ -26,7 +26,14 @@ namespace Mechanics
             lastRoomVisited = roomId;
 
             ChangeRoomById(roomId);
-            sceneLoadManager.OnNewSceneActive += () => { RoomVisited(roomId, userInitiated); };
+
+            Action onNewSceneActive = null;
+            onNewSceneActive = () => {
+                RoomVisited(roomId, userInitiated);
+                sceneLoadManager.OnNewSceneActive -= onNewSceneActive;
+            };
+
+            sceneLoadManager.OnNewSceneActive += onNewSceneActive;
         }
 
         private void ChangeRoomById(ERoomID roomId)
