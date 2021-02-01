@@ -20,6 +20,7 @@ namespace Mechanics
             if (lastRoomVisited == roomId)
             {
                 RoomVisited(roomId);
+                return;
             }
 
             lastRoomVisited = roomId;
