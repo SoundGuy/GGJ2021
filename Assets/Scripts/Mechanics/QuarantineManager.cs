@@ -23,7 +23,7 @@ namespace Mechanics
                 throw new System.Exception("Missing a RoomManager in the scene");
             }
 
-            FindObjectOfType<TimeManager>().OnTimePointReached += OnTimePointReached;
+            timeManager.OnTimePointReached += OnTimePointReached;
         }
 
         public void OnTimePointReached(EGameEffects gameEffects)
